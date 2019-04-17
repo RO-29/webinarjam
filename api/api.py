@@ -4,7 +4,7 @@ import os
 import requests
 
 application = Flask(__name__)
-cors = CORS(app, resources={r"*": {"origins": "http://www.getmassivesales.com"}})
+cors = CORS(application, resources={r"*": {"origins": "http://www.getmassivesales.com"}})
 
 
 WEBINARJAM_API_KEY = os.environ.get("WEBINARJAM_API_KEY", '')
