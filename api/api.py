@@ -2,7 +2,7 @@ from flask import Flask, jsonify,Response,request
 import os
 import requests
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
 WEBINARJAM_API_KEY = os.environ.get("WEBINARJAM_API_KEY", '')
@@ -10,7 +10,7 @@ WEBINARJAM_WEBINAR_ID = os.environ.get("WEBINARJAM_WEBINAR_ID", '')
 WEBINARJAM_GET_WEBINAR_SCHEDULE = "https://webinarjam.genndi.com/api/everwebinar/webinar"
 WEBINARJAM_REGISTER_WEBINAR = "https://webinarjam.genndi.com/api/everwebinar/register"
 
-@app.route('/schedule/webinars/<webinar_id>/', methods=['GET'])
+@application.route('/schedule/webinars/<webinar_id>/', methods=['GET'])
 def get_webinar_schedule(webinar_id):
 	webinar_response, webinar_exist = build_webinar_schedule_response(webinar_id)
 	if not webinar_exist:
@@ -38,7 +38,7 @@ def build_webinar_schedule_response(webinar_id):
 	except KeyError:
 		return {},False
 
-@app.route('/register/webinars/<webinar_id>/<schedule>/', methods=['POST'])
+@application.route('/register/webinars/<webinar_id>/<schedule>/', methods=['POST'])
 def register_webinar(webinar_id,schedule):
 	webinar_response, webinar_exist = build_webinar_register_response(webinar_id,schedule,request.get_json())
 	if not webinar_exist:
@@ -73,4 +73,4 @@ def build_webinar_register_response(webinar_id,schedule,user_data):
 
 
 if __name__ == '__main__':
-	app.run(debug=True,host = '0.0.0.0')
+	application.run(debug=True,host = '0.0.0.0')
