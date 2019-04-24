@@ -65,7 +65,9 @@ def build_webinar_register_response(webinar_id,schedule,user_data):
 	    "schedule":schedule,
 		"first_name":user_data.get("first_name",''),
 		"email":user_data.get("email",''),
-		"phone":user_data.get("phone",'')
+		"phone":user_data.get("phone",''),
+		"phone_country_code":"91",
+
 	}
 	if schedule == "jot":
 		webinar_jam_register_body['real_dates'] = 1
