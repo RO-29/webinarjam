@@ -43,7 +43,7 @@ pyOpenSSL==17.2.0
 python-jenkins==0.4.16
 pytz==2018.3
 PyYAML==3.13
-requests==2.18.4
+requests==2.20.0
 rocket-errbot==1.2.5
 six==1.11.0
 stevedore==1.30.1
